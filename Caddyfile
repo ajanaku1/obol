@@ -1,0 +1,12 @@
+# Caddy reverse proxy for Obol — automatic HTTPS via Let's Encrypt.
+#
+# PUBLIC_HOST is the public hostname Caddy serves. With no domain, use a
+# wildcard DNS host that resolves to the VM's public IP, e.g.
+#   export PUBLIC_HOST=203.0.113.5.sslip.io
+# Then run:  caddy run --config Caddyfile
+#
+# Only the web app is exposed. The data market (:4020) stays internal.
+
+{$PUBLIC_HOST} {
+	reverse_proxy localhost:3000
+}
