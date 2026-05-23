@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+.claude/
+.pnp/
+
+# builds
+dist/
+build/
+.next/
+out/
+
+# secrets — never commit keys, wallets, or env files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+wallet.json
+agent-wallet.json
+
+# local agent state
+*.db
+*.db-journal
+*.sqlite
+data/runs/
+
+# internal planning docs — not part of the public repo
+goal.md
+prompt.md
+
+# misc
+.DS_Store
+*.log
+coverage/
+.vercel

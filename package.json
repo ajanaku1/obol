@@ -1,0 +1,26 @@
+{
+  "name": "obol",
+  "private": true,
+  "version": "0.1.0",
+  "description": "An autonomous AI agent that spends USDC to buy knowledge, settling every sub-cent purchase on Arc.",
+  "type": "module",
+  "workspaces": [
+    "agent",
+    "mcp/payments",
+    "mcp/data",
+    "mcp/ledger",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "wallet:create": "npm run wallet:create --workspace=@obol/payments",
+    "wallet:status": "npm run wallet:status --workspace=@obol/payments",
+    "agent": "tsx agent/src/cli.ts",
+    "dev": "npm run dev --workspace=@obol/frontend",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

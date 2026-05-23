@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  /* A faint bronze glow rising from the top — the agora at dusk. */
+  background-color: theme("colors.ink");
+  background-image: radial-gradient(
+    120% 60% at 50% -10%,
+    rgba(205, 166, 85, 0.1),
+    transparent 60%
+  );
+  background-attachment: fixed;
+  color: theme("colors.parchment");
+  font-family: var(--font-body), Georgia, serif;
+  font-weight: 300;
+}
+
+/* Struck-metal grain — barely there, but it kills the flat-screen feel. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@layer base {
+  ::selection {
+    background: theme("colors.bronze");
+    color: theme("colors.ink");
+  }
+  :focus-visible {
+    outline: 1px solid theme("colors.bronze");
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* The minted hairline — the structural rule running through every screen. */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      theme("colors.edge") 12%,
+      theme("colors.edge") 88%,
+      transparent
+    );
+  }
+  .card {
+    @apply rounded-card border border-edge bg-stone;
+  }
+  .label {
+    @apply font-mono text-[10px] uppercase tracking-[0.22em] text-muted;
+  }
+  .hash {
+    @apply font-mono text-xs text-verdigris break-all;
+  }
+  /* A budget coin — the recurring money motif. */
+  .coin {
+    @apply grid place-items-center rounded-full border font-mono transition-all;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

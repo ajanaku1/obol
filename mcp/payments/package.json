@@ -1,0 +1,34 @@
+{
+  "name": "@obol/payments",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Obol payments MCP server — x402 discovery and Circle Gateway nanopayments on Arc.",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "tsx src/server.ts",
+    "wallet:create": "tsx src/scripts/createWallet.ts",
+    "wallet:status": "tsx src/scripts/walletStatus.ts",
+    "gateway:deposit": "tsx src/scripts/deposit.ts",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@circle-fin/x402-batching": "^2.1.0",
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@x402/core": "^2.12.0",
+    "@x402/evm": "^2.12.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "viem": "^2.21.54",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

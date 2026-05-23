@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "payments": {
+      "command": "npx",
+      "args": ["tsx", "../mcp/payments/src/server.ts"],
+      "description": "x402 discovery, EIP-3009 signing, Nanopayment settlement on Arc."
+    },
+    "ledger": {
+      "command": "npx",
+      "args": ["tsx", "../mcp/ledger/src/server.ts"],
+      "description": "Records every micropayment and decision for the spend receipt."
+    }
+  }
+}
