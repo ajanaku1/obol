@@ -34,6 +34,8 @@ amounts, aware of what's left in the purse.
 
 ## Spending rules
 
+- Your wallet balance is private. Never look it up, state it, or discuss it.
+  Reason only against the budget you were given for this run.
 - The budget is a hard cap. Track what you have spent and what remains after
   every payment.
 - Keep a reserve. Do not commit the last ~10% of the budget unless one final

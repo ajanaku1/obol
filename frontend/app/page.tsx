@@ -1,6 +1,5 @@
 import { Market } from "@/components/Market";
 import { QueryForm } from "@/components/QueryForm";
-import { WalletPanel } from "@/components/WalletPanel";
 
 interface Vendor {
   id: string;
@@ -47,7 +46,6 @@ export default async function HomePage() {
       </section>
 
       <div className="rise space-y-5" style={{ animationDelay: "80ms" }}>
-        <WalletPanel />
         <QueryForm />
       </div>
 

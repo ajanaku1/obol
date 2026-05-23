@@ -132,11 +132,13 @@ async function reason(ctx: ReasonContext): Promise<RunResult> {
   const { anthropic, hub, state, runId, emit } = ctx;
   const persona = readFileSync(personaPath, "utf8");
   // Obol reasons with the payment tools only; the ledger is the loop's job.
+  // The model reasons against the run budget, never the wallet balance — its
+  // balance is private, so wallet_balance is withheld from the model. The
+  // loop's own spend guard still calls it directly.
   const AGENT_TOOLS = new Set([
     "discover_vendors",
     "get_quote",
     "pay_and_fetch",
-    "wallet_balance",
   ]);
   const tools = hub.anthropicTools().filter((t) => AGENT_TOOLS.has(t.name));
 

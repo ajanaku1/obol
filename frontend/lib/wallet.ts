@@ -3,9 +3,7 @@ import "server-only";
 import { existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { config as loadEnv } from "dotenv";
-import { createPublicClient, erc20Abi, formatUnits, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { ARC } from "./arc";
 
 function loadRepoEnv(): void {
   let dir = process.cwd();
@@ -21,18 +19,16 @@ function loadRepoEnv(): void {
 }
 loadRepoEnv();
 
-const client = createPublicClient({ transport: http(process.env.ARC_RPC_URL ?? ARC.rpcUrl) });
-
 export interface ObolWallet {
   address: string;
-  balanceUsdc: string;
-  balanceBaseUnits: string;
-  funded: boolean;
 }
 
 /**
  * Obol's address: explicit OBOL_WALLET_ADDRESS if set, otherwise derived from
  * the private key. Deriving it means deployments need one fewer secret.
+ *
+ * Obol's balance is deliberately never exposed to the client — it's a private
+ * operating detail, not something users see or the agent discloses.
  */
 function obolAddress(): `0x${string}` | null {
   const explicit = process.env.OBOL_WALLET_ADDRESS;
@@ -46,26 +42,8 @@ function obolAddress(): `0x${string}` | null {
   }
 }
 
-/** Reads Obol's USDC balance on Arc, or null when no wallet is configured. */
+/** Obol's wallet address (the unlock-payment recipient), or null if unconfigured. */
 export async function getObolWallet(): Promise<ObolWallet | null> {
   const address = obolAddress();
-  if (!address) return null;
-
-  const usdc = (process.env.ARC_USDC_ADDRESS ?? ARC.usdc) as `0x${string}`;
-  try {
-    const balance = await client.readContract({
-      address: usdc,
-      abi: erc20Abi,
-      functionName: "balanceOf",
-      args: [address],
-    });
-    return {
-      address,
-      balanceUsdc: formatUnits(balance, 6),
-      balanceBaseUnits: balance.toString(),
-      funded: balance > 0n,
-    };
-  } catch {
-    return { address, balanceUsdc: "0", balanceBaseUnits: "0", funded: false };
-  }
+  return address ? { address } : null;
 }

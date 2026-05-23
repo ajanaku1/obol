@@ -13,11 +13,10 @@ interface Eip1193Provider {
 
 type Status = "disconnected" | "connecting" | "connected";
 
-/** Obol's own wallet, as reported by `/api/wallet`. */
+/** Obol's own wallet, as reported by `/api/wallet`. Address only — its balance
+ * is private and never exposed to the client. */
 export interface ObolWallet {
   address: string;
-  balanceUsdc: string;
-  funded: boolean;
 }
 
 interface WalletState {
