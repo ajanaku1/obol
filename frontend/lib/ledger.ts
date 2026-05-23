@@ -26,7 +26,9 @@ function repoRoot(): string {
 let cached: Database.Database | null = null;
 
 function dbFilePath(): string {
-  return resolve(repoRoot(), "data", "runs", "obol.db");
+  // OBOL_DB_PATH lets the agent and the web app share a writable location in
+  // containers (e.g. /tmp on Hugging Face Spaces). Must match the agent's path.
+  return process.env.OBOL_DB_PATH ?? resolve(repoRoot(), "data", "runs", "obol.db");
 }
 
 function db(): Database.Database | null {
