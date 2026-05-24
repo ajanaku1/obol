@@ -23,7 +23,7 @@ async function loadVendors(): Promise<Vendor[]> {
 const STEPS: [string, string, string][] = [
   ["i", "It surveys", "Discovers every paid vendor via x402 before it spends a coin."],
   ["ii", "It fronts", "Buys the sources that fit from its own purse, and stops when the answer holds."],
-  ["iii", "You unlock", "Pay what it spent plus 15% to reveal the answer — only if it found one."],
+  ["iii", "You unlock", "Pay what it spent plus 15% to reveal the answer, only if it found one."],
 ];
 
 export default async function HomePage() {
@@ -33,15 +33,15 @@ export default async function HomePage() {
     <div className="space-y-7">
       <section className="rise">
         <h1 className="font-display text-[2.7rem] font-medium leading-[1.04] text-parchment sm:text-5xl">
-          An agent that buys
+          An agent that makes
           <br />
-          knowledge — <span className="text-bronze italic">and not a cent more.</span>
+          a market in <span className="text-bronze italic">knowledge.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-          Hand Obol a question and a ceiling. It walks a market of paid data
-          vendors, fronts the cost on Arc, and stops when the answer is good
-          enough — then unlocks it for what it spent plus 15%. Pay only if it
-          delivers.
+          Obol walks a live market of priced data vendors, pays each per call
+          via Circle Nanopayments on Arc, and sells you the synthesized answer
+          for what it spent plus a margin. It buys wholesale, sells retail, and
+          settles every sub-cent transaction in USDC. Pay only if it delivers.
         </p>
       </section>
 

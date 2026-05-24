@@ -1,6 +1,6 @@
 # Obol
 
-**An autonomous AI agent that spends USDC to buy knowledge.**
+**Agentic commerce on Arc: an autonomous agent that buys data, sells answers, and settles every sub-cent payment in USDC.**
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
@@ -11,13 +11,16 @@
 
 ![Obol](docs/images/landing.png)
 
-Give Obol a question and a ceiling (the most you'd pay for an answer). Obol
-**fronts the work**: it discovers paid data vendors on its own, reasons about
-which sources are worth paying for, pays each a sub-cent USDC micropayment on
-**Arc testnet**, and stops when the answer is good enough. Then it shows you
-what it spent and locks the answer behind a single payment of **what it spent
-plus 15%**. You pay only if it found something, and never more than your
-ceiling. No pre-funded budget, no overpayment, no refunds to chase.
+Obol is a machine participant in a market. Give it a question and a ceiling
+(the most you'd pay), and it walks a live market of priced data vendors,
+reasons about which sources are worth paying for, and pays each per call via
+**Circle Nanopayments** on **Arc**: gasless, sub-cent, settled instantly.
+Then it sells you the synthesized answer for **what it spent plus 15%**.
+
+It buys wholesale, sells retail, and earns the spread: an agent that **makes a
+market in knowledge**. You front nothing; Obol fronts the cost and only
+charges if it delivers, never above your ceiling. No pre-funded budget, no
+overpayment, no refunds to chase.
 
 An *obol* was the small coin an Athenian carried into the agora for the day's
 small purchases. Obol is an agent that walks that agora with a purse, and
@@ -26,10 +29,10 @@ spends deliberately.
 > Built for the **Agora Agents Hackathon** (Canteen × Circle × Arc).
 
 **Highlights**
-- **Real Circle Nanopayments**, live on Arc: buyer `GatewayClient` plus seller `BatchFacilitatorClient`, gasless batched settlement. Verified end-to-end.
-- **A business, not a faucet.** Obol fronts the cost and earns a 15% margin on delivery (pay-to-unlock). No pre-funded budget, no overpayment.
-- **Genuine procurement intelligence.** 7 priced vendors (incl. SEC EDGAR filings, OpenAlex citations, Tavily web research); the agent corroborates across sources under a budget and stops when the answer holds.
-- **Honest by construction.** Never charged for a failed or empty result, and spend-guarded against draining its purse.
+- **Agentic commerce, live on Arc.** Every call is a real Circle Nanopayment (Gateway batching), the primitive Circle built for high-frequency machine-to-machine commerce. Gasless, sub-cent, verified end-to-end.
+- **A two-sided market agent.** Obol fronts capital to buy data wholesale and sells answers at cost + 15%, earning the spread. A business, not a faucet.
+- **Genuine procurement intelligence.** Discovers a 7-vendor market (incl. SEC EDGAR filings, OpenAlex citations, Tavily web research), corroborates across sources under budget, and stops when the answer holds. Real decisions, not automation.
+- **Honest by construction.** Never charged for a failed or empty result, spend-guarded against draining its purse, and settles every transaction in USDC on Arc.
 
 ---
 
