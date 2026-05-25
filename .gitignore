@@ -8,6 +8,7 @@ dist/
 build/
 .next/
 out/
+*.tsbuildinfo
 
 # secrets — never commit keys, wallets, or env files
 .env
@@ -27,6 +28,10 @@ data/runs/
 # internal planning docs — not part of the public repo
 goal.md
 prompt.md
+
+# video production assets (large media + remotion project)
+video/
+*.mov
 
 # misc
 .DS_Store
